@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/helpers/spacing.dart';
 import '../../../core/networking/order_model.dart';
+import '../../../core/theming/font_weight_helper.dart';
+import '../data/models/metric_data.dart';
+import 'components/metric_card.dart';
+import 'components/metrics_header.dart';
 
 class NumericMetricsScreen extends StatelessWidget {
   final List<Order> orders;
@@ -14,128 +20,54 @@ class NumericMetricsScreen extends StatelessWidget {
     final returnsCount =
         orders.where((order) => order.status == "RETURNED").length;
 
+    final metrics = [
+      MetricData(
+        icon: Icons.shopping_bag_rounded,
+        color: Colors.blue,
+        label: 'Total Orders',
+        value: totalOrders.toString(),
+      ),
+      MetricData(
+        icon: Icons.attach_money,
+        color: Colors.green,
+        label: 'Average Price',
+        value: '\$${averagePrice.toStringAsFixed(2)}',
+      ),
+      MetricData(
+        icon: Icons.autorenew,
+        color: Colors.red,
+        label: 'Returns',
+        value: returnsCount.toString(),
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'Metrics Overview',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeightHelper.medium,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Header Section
-              const Text(
-                'Key Insights',
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
+              const MetricsHeader(
+                title: 'Key Insights',
+                subtitle: 'Get a quick overview of your data metrics',
               ),
-              const SizedBox(height: 8),
-              const Text(
-                'Get a quick overview of your data metrics',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                ),
-              ),
-              const SizedBox(height: 24),
-              // Metrics Cards Section
-              MetricCard(
-                icon: Icons.shopping_bag_rounded,
-                color: Colors.blue,
-                label: 'Total Orders',
-                value: totalOrders.toString(),
-              ),
-              const SizedBox(height: 16),
-              MetricCard(
-                icon: Icons.attach_money,
-                color: Colors.green,
-                label: 'Average Price',
-                value: '\$${averagePrice.toStringAsFixed(2)}',
-              ),
-              const SizedBox(height: 16),
-              MetricCard(
-                icon: Icons.autorenew,
-                color: Colors.red,
-                label: 'Returns',
-                value: returnsCount.toString(),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MetricCard extends StatelessWidget {
-  final IconData icon;
-  final Color color;
-  final String label;
-  final String value;
-
-  const MetricCard({
-    super.key,
-    required this.icon,
-    required this.color,
-    required this.label,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {}, // Add meaningful interactivity if needed
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        elevation: 6,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-          child: Row(
-            children: [
-              // Icon with Background
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: color.withOpacity(0.15),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(icon, color: color, size: 28),
-              ),
-              const SizedBox(width: 20),
-              // Label and Value
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      label,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      value,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: color,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              verticalSpace(24),
+              ...metrics.map((metric) => Padding(
+                    padding: EdgeInsets.only(bottom: 16.h),
+                    child: MetricCard(metric: metric),
+                  )),
             ],
           ),
         ),
