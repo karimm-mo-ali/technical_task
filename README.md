@@ -32,19 +32,15 @@ Graph Screen: Visualizes:
     - git clone https://github.com/karimm-mo-ali/technical_task
 
 3. Fetch the project dependencies:
-    - flutter pub get
+    - using command ====> flutter pub get
 
-  
-
-## Run the App
-You can run the app on any supported platform:
-
-- Web: 
-   - flutter run -d chrome
-- Android:
-   - flutter run -d android
-- iOS: 
-   - flutter run -d ios
+4. You can run the app on any supported platform:
+    - Web: 
+       - using command ====> flutter run -d chrome
+    - Android:
+       - using command ====> flutter run -d android
+    - iOS: 
+       - using command ====> flutter run -d ios
 
 
 
