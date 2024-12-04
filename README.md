@@ -1,16 +1,52 @@
-# flapkap_task
+# Technical Task
 
-A new Flutter project.
+A Flutter application designed to showcase insights from a JSON file containing order data. This app is cross-platform, supporting iOS, Android, and Web.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Metrics Screen: Displays:
+ - Total number of orders
+ - Average order price
+ - Number of returned orders
+
+
+Graph Screen: Visualizes:
+ - Number of orders (Y-axis)
+ - Time (X-axis)
+
+
+
+
+## How to Run the App
+
+### Prerequisites
+1. Ensure the following are installed:
+    - Flutter SDK (Version 3.x.x or later)
+    - Android Studio, Xcode, or Visual Studio Code
+    - Emulator/Simulator or physical devices for testing
+
+2. Clone the repository:
+    - git clone https://github.com/karimm-mo-ali/technical_task
+
+3. Fetch the project dependencies:
+    - flutter pub get
+
+  
+
+## Run the App
+You can run the app on any supported platform:
+
+- Web: 
+   - flutter run -d chrome
+- Android:
+   - flutter run -d android
+- iOS: 
+   - flutter run -d ios
+
+
+
+
+
