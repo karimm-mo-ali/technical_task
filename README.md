@@ -3,6 +3,15 @@
 A Flutter application designed to showcase insights from a JSON file containing order data. This app is cross-platform, supporting iOS, Android, and Web.
 
 
+## Preview
+
+Explore the app in action through the following screen recordings:
+
+- **Web**: [Loom Recording](https://www.loom.com/share/41c981c9d2864c1fbf8f8b33712045a1)
+- **iOS**: [Loom Recording](https://www.loom.com/share/a7ff655cb09145cb882aed64ed01000c)
+- **Android**: [Loom Recording](https://www.loom.com/share/2f04fb0607674d5f9d92937c862169d2)
+
+
 
 
 ## Features
